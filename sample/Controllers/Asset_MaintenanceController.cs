@@ -19,11 +19,10 @@ public class Asset_MaintenanceController : Controller
 
     public async Task<IActionResult> Index()
     {
-        return _context.AssetMaintenances != null ?
-                     View(await _context.AssetMaintenances.ToListAsync()) :
-                     Problem("Entity set 'AppDbContext.AssetMaintenances'  is null.");
+        return _context.AssetMaintenances != null
+            ? View(await _context.AssetMaintenances.ToListAsync())
+            : Problem("Entity set 'AppDbContext.AssetMaintenances'  is null.");
     }
-
 
     // GET: AssetMaintenances/Details/5
     public async Task<IActionResult> Details(int? id)
@@ -33,8 +32,9 @@ public class Asset_MaintenanceController : Controller
             return NotFound();
         }
 
-        var AssetMaintenances = await _context.AssetMaintenances
-            .FirstOrDefaultAsync(m => m.Id == id);
+        var AssetMaintenances = await _context.AssetMaintenances.FirstOrDefaultAsync(
+            m => m.Id == id
+        );
         if (AssetMaintenances == null)
         {
             return NotFound();
@@ -44,7 +44,7 @@ public class Asset_MaintenanceController : Controller
     }
 
     // GET: AssetMaintenances/Create
-    
+
     public IActionResult Create()
     {
         var model = new Asset_Maintenance();
@@ -53,21 +53,24 @@ public class Asset_MaintenanceController : Controller
 
         // Replace `_context.Assets.ToList()` with your logic to retrieve the assets list
 
-        var assetList = assets.Select(a => new SelectListItem { Value = a.Id.ToString(), Text = a.Name }).ToList();
+        var assetList = assets
+            .Select(a => new SelectListItem { Value = a.Id.ToString(), Text = a.Name })
+            .ToList();
         ViewBag.Assets = assetList;
 
         return View();
     }
 
-
-
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,AssetId,MaintenanceDate,MaintenanceType,Description,Technician,Cost,CreatedAt")] Asset_Maintenance asset_Maintenance)
+    public async Task<IActionResult> Create(
+        [Bind("Id,AssetId,MaintenanceDate,MaintenanceType,Description,Technician,Cost")]
+            Asset_Maintenance asset_Maintenance
+    )
     {
-        
         if (ModelState.IsValid)
         {
+            asset_Maintenance.CreatedAt = DateTime.Now;
             _context.Add(asset_Maintenance);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -94,7 +97,11 @@ public class Asset_MaintenanceController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,AssetId,MaintenanceDate,MaintenanceType,Description,Technician,Cost,CreatedAt")] Asset_Maintenance asset_Maintenance)
+    public async Task<IActionResult> Edit(
+        int id,
+        [Bind("Id,AssetId,MaintenanceDate,MaintenanceType,Description,Technician,Cost,CreatedAt")]
+            Asset_Maintenance asset_Maintenance
+    )
     {
         if (id != asset_Maintenance.Id)
         {
@@ -132,8 +139,7 @@ public class Asset_MaintenanceController : Controller
             return NotFound();
         }
 
-        var assetMain = await _context.AssetMaintenances
-            .FirstOrDefaultAsync(m => m.Id == id);
+        var assetMain = await _context.AssetMaintenances.FirstOrDefaultAsync(m => m.Id == id);
         if (assetMain == null)
         {
             return NotFound();
@@ -178,5 +184,4 @@ public class Asset_MaintenanceController : Controller
         var assetMain = _context.AssetMaintenances.FirstOrDefault(m => m.Id == id);
         return PartialView("_Print", assetMain);
     }
-
 }

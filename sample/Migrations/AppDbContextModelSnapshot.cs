@@ -93,7 +93,7 @@ namespace sample.Migrations
 
                     b.HasIndex("AssetId");
 
-                    b.ToTable("assetMaintenances");
+                    b.ToTable("AssetMaintenances");
                 });
 
             modelBuilder.Entity("sample.Models.Asset_Movement", b =>

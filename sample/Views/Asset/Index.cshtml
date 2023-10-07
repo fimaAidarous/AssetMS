@@ -4,38 +4,36 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Asset List</h1>
 
 <p>
-    <a asp-action="Create" class="accordion-button-btn-dark">Create New</a>
+    <a asp-action="Create" class="accordion-button-btn-dark btn btn-primary">Create New</a>
 </p>
-<table class="table">
+<table class="table table-bordered table-striped table-hover">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Name).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                @Html.DisplayNameFor(model => model.Category).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location)
+                @Html.DisplayNameFor(model => model.Location).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.status)
+                @Html.DisplayNameFor(model => model.status).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PurchaseDate)
+                @Html.DisplayNameFor(model => model.PurchaseDate).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PurchaseCost)
+                @Html.DisplayNameFor(model => model.PurchaseCost).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WarrantyExpiryDate)
+                @Html.DisplayNameFor(model => model.WarrantyExpiryDate).ToUpper()
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -59,14 +57,12 @@
                     @Html.DisplayFor(modelItem => item.PurchaseDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PurchaseCost)
+                    @Html.DisplayFor(modelItem => item.PurchaseCost)    $
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.WarrantyExpiryDate)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
+                
                 <td>
                     <a asp-action="Edit" class="btn btn-info mr-2 mt-2" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Delete"  class="btn btn-danger mr-2 mt-2 " asp-route-id="@item.Id">Delete</a>

@@ -6,7 +6,7 @@ using sample.Models;
 
 namespace sample.Controllers
 {
-    public class Asset_MovementController:Controller
+    public class Asset_MovementController : Controller
     {
         private readonly AppDbContext _context;
 
@@ -19,11 +19,10 @@ namespace sample.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return _context.AssetMovements != null ?
-                         View(await _context.AssetMovements.ToListAsync()) :
-                         Problem("Entity set 'AppDbContext.AssetMovements'  is null.");
+            return _context.AssetMovements != null
+                ? View(await _context.AssetMovements.ToListAsync())
+                : Problem("Entity set 'AppDbContext.AssetMovements'  is null.");
         }
-
 
         // GET: AssetMovement/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -33,8 +32,7 @@ namespace sample.Controllers
                 return NotFound();
             }
 
-            var AssetMovement = await _context.AssetMovements
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var AssetMovement = await _context.AssetMovements.FirstOrDefaultAsync(m => m.Id == id);
             if (AssetMovement == null)
             {
                 return NotFound();
@@ -52,20 +50,23 @@ namespace sample.Controllers
 
             // Replace `_context.Assets.ToList()` with your logic to retrieve the assets list
 
-            var assetList = assets.Select(a => new SelectListItem { Value = a.Id.ToString(), Text = a.Name }).ToList();
+            var assetList = assets
+                .Select(a => new SelectListItem { Value = a.Id.ToString(), Text = a.Name })
+                .ToList();
             ViewBag.Assets = assetList;
             return View();
-
-
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AssetId,FromLocation,ToLocation,MoveDate,MoveReason,ResponsibleParty,CreatedAt")] Asset_Movement asset_Movement)
+        public async Task<IActionResult> Create(
+            [Bind("Id,AssetId,FromLocation,ToLocation,MoveDate,MoveReason,ResponsibleParty")]
+                Asset_Movement asset_Movement
+        )
         {
             if (ModelState.IsValid)
             {
+                asset_Movement.CreatedAt = DateTime.Now;
                 _context.Add(asset_Movement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -91,7 +92,11 @@ namespace sample.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AssetId,FromLocation,ToLocation,MoveDate,MoveReason,ResponsibleParty,CreatedA")] Asset_Movement asset_Movement)
+        public async Task<IActionResult> Edit(
+            int id,
+            [Bind("Id,AssetId,FromLocation,ToLocation,MoveDate,MoveReason,ResponsibleParty")]
+                Asset_Movement asset_Movement
+        )
         {
             if (id != asset_Movement.Id)
             {
@@ -129,8 +134,7 @@ namespace sample.Controllers
                 return NotFound();
             }
 
-            var assetMove = await _context.AssetMovements
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var assetMove = await _context.AssetMovements.FirstOrDefaultAsync(m => m.Id == id);
             if (assetMove == null)
             {
                 return NotFound();
@@ -174,6 +178,5 @@ namespace sample.Controllers
             var assetMove = _context.AssetMovements.FirstOrDefault(m => m.Id == id);
             return PartialView("_Print", assetMove);
         }
-
     }
 }

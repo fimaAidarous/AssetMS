@@ -50,10 +50,12 @@ namespace sample.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Category,Location,status,PurchaseDate,PurchaseCost,PurchaseCost,WarrantyExpiryDate,CreatedAt")] Asset asset)
+        public async Task<IActionResult> Create([Bind("Id,Name,Category,Location,PurchaseDate,PurchaseCost,PurchaseCost,WarrantyExpiryDate")] Asset asset)
         {
             if (ModelState.IsValid)
             {
+                asset.CreatedAt = DateTime.Now;
+                asset.status = "Available";
                 _context.Add(asset);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
