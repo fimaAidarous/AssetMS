@@ -1,0 +1,28 @@
+﻿@model sample.Models.Asset
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Asset</title>
+</head>
+<body>
+    <h1>Asset Details</h1>
+    <p>Asset ID: @Model.Id</p>
+    <p>Name: @Model.Name</p>
+    <p>Category: @Model.Category</p>
+    <p>Location: @Model.Location</p>
+    <p>Status: @Model.status</p>
+    <p>Purchase Date: @Model.PurchaseDate</p>
+    <p>Purchase Cost: @Model.PurchaseCost</p>
+    <p>Warranty Expiry Date: @Model.WarrantyExpiryDate</p>
+    <p>Created At: @Model.CreatedAt</p>
+
+    
+        <script>
+            window.print();
+            window.close();
+
+        </script>
+    
+</body>
+</html>

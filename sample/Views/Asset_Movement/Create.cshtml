@@ -1,0 +1,60 @@
+﻿@model sample.Models.Asset_Movement
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Asset_Movement</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AssetId" class="control-label"></label>
+                <select asp-for="AssetId" class="form-control" asp-items="ViewBag.Assets"></select>
+                <span asp-validation-for="AssetId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromLocation" class="control-label"></label>
+                <input asp-for="FromLocation" class="form-control" />
+                <span asp-validation-for="FromLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToLocation" class="control-label"></label>
+                <input asp-for="ToLocation" class="form-control" />
+                <span asp-validation-for="ToLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoveDate" class="control-label"></label>
+                <input asp-for="MoveDate" class="form-control" />
+                <span asp-validation-for="MoveDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoveReason" class="control-label"></label>
+                <input asp-for="MoveReason" class="form-control" />
+                <span asp-validation-for="MoveReason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResponsibleParty" class="control-label"></label>
+                <input asp-for="ResponsibleParty" class="form-control" />
+                <span asp-validation-for="ResponsibleParty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,32 @@
+﻿<!-- Views/Shared/_Print.cshtml -->
+@model sample.Models.Asset_Movement
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Asset Movement</title>
+</head>
+<body>
+    <h1>Asset Details</h1>
+    <p>Asset ID: @Model.Id</p>
+    <p>From Location: @Model.FromLocation</p>
+    <p>To Location: @Model.ToLocation</p>
+    <p>Move Date: @Model.MoveDate</p>
+    <p>MoveReason: @Model.MoveReason</p>
+    <p>Responsible Party: @Model.ResponsibleParty</p>
+    <p>Created At: @Model.CreatedAt</p>
+
+    <script>
+        window.print();
+        window.close();
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+﻿IEnumerable<sample.Models.Asset_Movement>
+
+@{
+    ViewBag.Title = "Movement Assets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movement Assets</h2>
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>Asset Name</th>
+        <th>From Location</th>
+        <th>To Location</th>
+        <th>Move Date</th>
+        <th>Move Reason</th>
+        <th>Responsible Party</th>
+    </tr>
+    @foreach (var assetMovement in Model)
+    {
+        <tr>
+            <td>@assetMovement.Id</td>
+            <td>@assetMovement.Asset.Name</td>
+            <td>@assetMovement.FromLocation</td>
+            <td>@assetMovement.ToLocation</td>
+            <td>@assetMovement.MoveDate</td>
+            <td>@assetMovement.MoveReason</td>
+            <td>@assetMovement.ResponsibleParty</td>
+        </tr>
+    }
+</table>

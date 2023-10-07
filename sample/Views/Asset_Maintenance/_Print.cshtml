@@ -1,0 +1,32 @@
+﻿<!-- Views/Shared/_Print.cshtml -->
+@model sample.Models.Asset_Maintenance
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Asset Maintenance</title>
+</head>
+<body>
+    <h1>Asset Details</h1>
+    <p>Asset ID: @Model.Id</p>
+    <p>Maintenance Date: @Model.MaintenanceDate</p>
+    <p>Maintenance Type: @Model.MaintenanceType</p>
+    <p>Description: @Model.Description</p>
+    <p>Technician: @Model.Technician</p>
+    <p>Cost: @Model.Cost</p>
+    <p>Created At: @Model.CreatedAt</p>
+
+    <script>
+        window.print();
+        window.close();
+
+    </script>
+ 
+</body>
+</html>
+
+
+
+
+
+

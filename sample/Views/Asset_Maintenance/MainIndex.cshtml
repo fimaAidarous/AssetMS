@@ -1,0 +1,31 @@
+﻿@model IEnumerable<sample.Models.Asset_Maintenance>
+
+@{
+    ViewBag.Title = "Maintenance Assets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Maintenance Assets</h2>
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>Asset Name</th>
+        <th>Maintenance Date</th>
+        <th>Maintenance Type</th>
+        <th>Description</th>
+        <th>Technician</th>
+        <th>Cost</th>
+    </tr>
+    @foreach (var assetMaintenance in Model)
+    {
+        <tr>
+            <td>@assetMaintenance.Id</td>
+            <td>@assetMaintenance.Asset.Name</td>
+            <td>@assetMaintenance.MaintenanceDate</td>
+            <td>@assetMaintenance.MaintenanceType</td>
+            <td>@assetMaintenance.Description</td>
+            <td>@assetMaintenance.Technician</td>
+            <td>@assetMaintenance.Cost</td>
+        </tr>
+    }
+</table>
