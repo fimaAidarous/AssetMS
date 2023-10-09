@@ -1,0 +1,26 @@
+﻿@model IEnumerable<sample.Models.Asset>
+
+<h1>Report</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Asset Name</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Purchase Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var asset in Model)
+            {
+                <tr>
+                    <td>@asset.Name</td>
+                    <td>@asset.Category</td>
+                    <td>@asset.Location</td>
+                    <td>@asset.status</td>
+                    <td>@asset.PurchaseDate.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
