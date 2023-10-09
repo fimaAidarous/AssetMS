@@ -27,8 +27,8 @@ namespace sample.Controllers
             var assets = _context.Assets
                 .Where(
                     a =>
-                        a.PurchaseDate >= reportViewModel.FromDate
-                        && a.PurchaseDate <= reportViewModel.ToDate
+                        a.CreatedAt >= reportViewModel.FromDate
+                        && a.CreatedAt <= reportViewModel.ToDate
                 )
                 .ToList();
             ViewBag.Assets = assets;
