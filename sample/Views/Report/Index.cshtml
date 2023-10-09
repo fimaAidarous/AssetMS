@@ -2,8 +2,9 @@
 
 <h1>Report</h1>
 
-<form asp-action="Index">
-    <div class="form-group">
+<form asp-action="Index" class="d-flex justify-content-lg-between mb-2 align-items-center">
+   <div class="d-flex gap-2 align-items-center ">
+     <div class="form-group">
         <label asp-for="FromDate">From Date</label>
         <input type="date" class="form-control" asp-for="FromDate" required />
     </div>
@@ -11,7 +12,10 @@
         <label asp-for="ToDate">To Date</label>
         <input type="date" asp-for="ToDate" class="form-control" required />
     </div>
-    <input type="submit" value="Generate Report" class="btn btn-primary" />
+    <div><input type="submit" value="Generate Report" class="btn btn-primary mt-3" /></div>
+   </div>
+   <div></div>
+    
 
 </form>
 <table class="table table-bordered">
