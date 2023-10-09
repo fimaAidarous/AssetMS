@@ -2,7 +2,7 @@
 
 <h1>Report</h1>
 
-<form method="get" asp-action="Index">
+<form asp-action="Index">
     <div class="form-group">
         <label for="fromDate">From Date</label>
         <input type="date" class="form-control" name="fromDate" required />
@@ -11,18 +11,29 @@
         <label for="toDate">To Date</label>
         <input type="date" class="form-control" name="toDate" required />
     </div>
-    <input type="submit" value=" Generate Report" class="btn btn-primary" />
-   
+    <input type="submit" value="Generate Report" class="btn btn-primary" />
+
 </form>
-    <table class="table table-bordered">
-        <thead>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Asset Name</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Purchase Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var asset in ViewBag.Assets)
+        {
             <tr>
-                <th>Asset Name</th>
-                <th>Category</th>
-                <th>Location</th>
-                <th>Status</th>
-                <th>Purchase Date</th>
+                <td>@asset.Name</td>
+                <td>@asset.Category</td>
+                <td>@asset.Location</td>
+                <td>@asset.status</td>
+                <td>@asset.PurchaseDate.ToString("yyyy-MM-dd")</td>
             </tr>
-        </thead>
-        </table>
-        
+        }
+    </tbody>
+</table>

@@ -16,20 +16,22 @@ namespace sample.Controllers
 
         public IActionResult Index()
         {
+            var assets = _context.Assets.ToList();
+            ViewBag.Assets = assets;
             return View();
         }
 
-        public IActionResult Index(DateTime? fromDate, DateTime? toDate)
+        [HttpPost]
+        public IActionResult Index([Bind("fromDate,toDate")] ReportViewModel reportViewModel)
         {
-            if (fromDate != null && toDate != null)
-            {
-                var assets = _context.Assets
-                    .Where(a => a.PurchaseDate >= fromDate && a.PurchaseDate <= toDate)
-                    .ToList();
-
-                return View("Report", assets);
-            }
-
+            var assets = _context.Assets
+                .Where(
+                    a =>
+                        a.PurchaseDate >= reportViewModel.FromDate
+                        && a.PurchaseDate <= reportViewModel.ToDate
+                )
+                .ToList();
+            ViewBag.Assets = assets;
             return View();
         }
 
