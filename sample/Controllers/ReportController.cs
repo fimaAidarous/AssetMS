@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using sample.Data;
 using sample.Models;
 
@@ -22,27 +22,108 @@ namespace sample.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index([Bind("fromDate,toDate")] ReportViewModel reportViewModel)
+        public IActionResult Index(
+            [Bind("FromDate,ToDate,Location,Status,Category,Type")] ReportViewModel reportViewModel
+        )
         {
-            var assets = _context.Assets
-                .Where(
-                    a =>
-                        a.CreatedAt >= reportViewModel.FromDate
-                        && a.CreatedAt <= reportViewModel.ToDate
-                )
-                .ToList();
+            var assets = new List<Asset>();
+
+            if (reportViewModel.Type == "Assets")
+            {
+                assets = _context.Assets
+                    .Where(
+                        a =>
+                            (
+                                !reportViewModel.FromDate.HasValue
+                                || a.CreatedAt >= reportViewModel.FromDate
+                            )
+                            && (
+                                !reportViewModel.ToDate.HasValue
+                                || a.CreatedAt <= reportViewModel.ToDate
+                            )
+                            && (
+                                reportViewModel.Location == null
+                                || a.Location == reportViewModel.Location
+                            )
+                            && (
+                                reportViewModel.Status == null || a.status == reportViewModel.Status
+                            )
+                            && (
+                                reportViewModel.Category == null
+                                || a.Category == reportViewModel.Category
+                            )
+                    )
+                    .ToList();
+            }
+            else if (reportViewModel.Type == "Maintenance")
+            {
+                assets = _context.AssetMaintenances
+                    .Where(
+                        a =>
+                            (
+                                !reportViewModel.FromDate.HasValue
+                                || a.Asset!.CreatedAt >= reportViewModel.FromDate
+                            )
+                            && (
+                                !reportViewModel.ToDate.HasValue
+                                || a.Asset!.CreatedAt <= reportViewModel.ToDate
+                            )
+                            && (
+                                reportViewModel.Location == null
+                                || a.Asset!.Location == reportViewModel.Location
+                            )
+                            && (
+                                reportViewModel.Status == null
+                                || a.Asset!.status == reportViewModel.Status
+                            )
+                            && (
+                                reportViewModel.Category == null
+                                || a.Asset!.Category == reportViewModel.Category
+                            )
+                    )
+                    .Select(a => a.Asset!)
+                    .ToList();
+            }
+            else if (reportViewModel.Type == "Movement")
+            {
+                assets = _context.AssetMovements
+                    .Where(
+                        a =>
+                            (
+                                !reportViewModel.FromDate.HasValue
+                                || a.Asset!.CreatedAt >= reportViewModel.FromDate
+                            )
+                            && (
+                                !reportViewModel.ToDate.HasValue
+                                || a.Asset!.CreatedAt <= reportViewModel.ToDate
+                            )
+                            && (
+                                reportViewModel.Location == null
+                                || a.Asset!.Location == reportViewModel.Location
+                            )
+                            && (
+                                reportViewModel.Status == null
+                                || a.Asset!.status == reportViewModel.Status
+                            )
+                            && (
+                                reportViewModel.Category == null
+                                || a.Asset!.Category == reportViewModel.Category
+                            )
+                    )
+                    .Select(a => a.Asset!)
+                    .ToList();
+            }
+
             ViewBag.Assets = assets;
             return View();
         }
 
         [HttpGet]
-        public IActionResult Report(DateTime fromDate, DateTime toDate)
+        public IActionResult Print(string assets)
         {
-            var assets = _context.Assets
-                .Where(a => a.PurchaseDate >= fromDate && a.PurchaseDate <= toDate)
-                .ToList();
+            List<Asset> assetList = JsonConvert.DeserializeObject<List<Asset>>(assets);
 
-            return View("Report", assets);
+            return PartialView("_Print", assetList);
         }
     }
 }

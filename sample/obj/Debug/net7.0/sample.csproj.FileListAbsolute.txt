@@ -898,3 +898,4 @@ C:\Users\Ritwan Abdirashit\source\repos\AssetMS\sample\bin\Debug\net7.0\th\Cryst
 C:\Users\Ritwan Abdirashit\source\repos\AssetMS\sample\bin\Debug\net7.0\tr\CrystalDecisions.Shared.resources.dll
 C:\Users\Ritwan Abdirashit\source\repos\AssetMS\sample\bin\Debug\net7.0\zh-CHS\CrystalDecisions.Shared.resources.dll
 C:\Users\Ritwan Abdirashit\source\repos\AssetMS\sample\bin\Debug\net7.0\zh-CHT\CrystalDecisions.Shared.resources.dll
+C:\Users\Ritwan Abdirashit\source\repos\AssetMS\sample\bin\Debug\net7.0\Newtonsoft.Json.dll
