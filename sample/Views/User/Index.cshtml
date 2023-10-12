@@ -1,0 +1,52 @@
+@model IEnumerable<sample.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>User List</h1>
+
+<p>
+    <a asp-action="Create" class="accordion-button-btn-dark btn btn-primary">Create New</a>
+</p>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email).ToUpper()
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name).ToUpper()
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role).ToUpper()
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" class="btn btn-info mr-2 mt-2" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" class="btn btn-danger mr-2 mt-2 " asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Details" class="btn btn-success mr-2 mt-2" asp-route-id="@item.Id">Details</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
