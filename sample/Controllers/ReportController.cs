@@ -55,7 +55,7 @@ namespace sample.Controllers
                     )
                     .ToList();
             }
-            else if (reportViewModel.Type == "Maintenance")
+            else if (reportViewModel.Type == "Maintainance")
             {
                 assets = _context.AssetMaintenances
                     .Where(
