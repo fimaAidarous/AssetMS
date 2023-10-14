@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 using sample.Data;
 using sample.Models;
 using System.Diagnostics;
@@ -10,6 +12,7 @@ namespace sample.Controllers
     {
         private readonly AppDbContext _context;
         private readonly ILogger<HomeController> _logger;
+
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -32,20 +35,6 @@ namespace sample.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        
-  
-
-       //public ActionResult MaintenanceIndex()
-       //     {
-       //         var model = _context.AssetMaintenances.Include("Asset").ToList();
-       //         return View(model);
-       //     }
-
-       //public ActionResult MovementIndex()
-       //     {
-       //         var model = _context.AssetMovements.Include("Asset").ToList();
-       //         return View(model);
-       //     }
         
     }
 }

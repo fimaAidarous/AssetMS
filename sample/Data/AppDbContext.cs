@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using sample.Models;
-
+using Microsoft.AspNet.Identity.EntityFramework;
 namespace sample.Data
 {
     public class AppDbContext : DbContext
@@ -11,7 +11,7 @@ namespace sample.Data
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Asset_Movement> AssetMovements { get; set; }
         public DbSet<Asset_Maintenance> AssetMaintenances { get; set; }
-
         public DbSet<User> Users { get; set; }
+
     }
 }
