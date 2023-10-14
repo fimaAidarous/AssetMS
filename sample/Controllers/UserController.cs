@@ -1,48 +1,51 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using sample.Data;
 using sample.Models;
-
 namespace sample.Controllers
 {
-    [Route("[controller]")]
     public class UserController : Controller
     {
-        private readonly ILogger<UserController> _logger;
         private readonly AppDbContext _context;
 
-        public UserController(ILogger<UserController> logger, AppDbContext context = null)
+        public UserController(AppDbContext context)
         {
-            _logger = logger;
             _context = context;
         }
 
-        [HttpGet]
+        // GET: User
+
         public async Task<IActionResult> Index()
         {
-            return _context.Users != null
-                ? View(await _context.Users.ToListAsync())
-                : Problem("Entity set 'AppDbContext.Asset");
-            // return View();
+            return _context.Users != null ?
+                         View(await _context.Users.ToListAsync()) :
+                         Problem("Entity set 'AppDbContext.'  is null.");
         }
 
-        [HttpGet("Create")]
+        // GET: User/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Users == null)
+            {
+                return NotFound();
+            }
+
+            var User = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (User == null)
+            {
+                return NotFound();
+            }
+
+            return View(User);
+        }
+
+        // GET: user/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -51,14 +54,16 @@ namespace sample.Controllers
             if (ModelState.IsValid)
             {
                 user.CreatedAt = DateTime.Now;
-                _context.Users.Add(user);
+                _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
 
-        // GET: Asset/Edit/5
+
+
+        // GET: User/Edit/5    
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Users == null)
@@ -66,25 +71,19 @@ namespace sample.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            var User = await _context.Users.FindAsync(id);
+            if (User == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(User);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(
-            int id,
-            [Bind(
-                "Id,Name,Category,Location,status,PurchaseDate,PurchaseCost,PurchaseCost,WarrantyExpiryDate,CreatedAt"
-            )]
-                Asset asset
-        )
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Email,Role,Password")] User user)
         {
-            if (id != asset.Id)
+            if (id != user.Id)
             {
                 return NotFound();
             }
@@ -93,12 +92,12 @@ namespace sample.Controllers
             {
                 try
                 {
-                    _context.Update(asset);
+                    _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AssetsExists(asset.Id))
+                    if (!UserExists(user.Id))
                     {
                         return NotFound();
                     }
@@ -109,55 +108,57 @@ namespace sample.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(asset);
+            return View(user);
         }
 
-        // GET: Asset/Delete/5
+        // GET: User/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Assets == null)
+            if (id == null || _context.Users == null)
             {
                 return NotFound();
             }
 
-            var asset = await _context.Assets.FirstOrDefaultAsync(m => m.Id == id);
-            if (asset == null)
+            var User = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (User == null)
             {
                 return NotFound();
             }
 
-            return View(asset);
+            return View(User);
         }
 
-        // POST: Asset/Delete/5
+        // POST: User/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Assets == null)
+            if (_context.Users == null)
             {
-                return Problem("Entity set 'AppDbContext.Assets'  is null.");
+                return Problem("Entity set 'AppDbContext.Users'  is null.");
             }
-            var asset = await _context.Assets.FindAsync(id);
-            if (asset != null)
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
             {
-                _context.Assets.Remove(asset);
+                _context.Users.Remove(user);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AssetsExists(int id)
+        private bool UserExists(int id)
         {
-            return (_context.Assets?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        // GET: Asset/Print/5
+        // GET: User/Print/5
         public IActionResult Print(int id)
         {
-            var asset = _context.Assets.FirstOrDefault(m => m.Id == id);
-            return PartialView("_Print", asset);
+            var User = _context.Users.FirstOrDefault(m => m.Id == id);
+            return PartialView("_Print", User);
         }
+
     }
 }

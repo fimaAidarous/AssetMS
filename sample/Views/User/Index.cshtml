@@ -1,4 +1,4 @@
-@model IEnumerable<sample.Models.User>
+﻿@model IEnumerable<sample.Models.User>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,16 +13,17 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Email).ToUpper()
+                @Html.DisplayNameFor(model => model.Name).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name).ToUpper()
+                @Html.DisplayNameFor(model => model.Email).ToUpper()
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Role).ToUpper()
             </th>
-
-
+            <th>
+                @Html.DisplayNameFor(model => model.Password).ToUpper()
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -31,15 +32,17 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Role)
                 </td>
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
                 <td>
                     <a asp-action="Edit" class="btn btn-info mr-2 mt-2" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Delete" class="btn btn-danger mr-2 mt-2 " asp-route-id="@item.Id">Delete</a>
