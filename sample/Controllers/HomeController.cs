@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using sample.Data;
 using sample.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace sample.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly ILogger<HomeController> _logger;
 
 

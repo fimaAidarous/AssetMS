@@ -50,14 +50,10 @@
                     asp-controller="Asset_Movement" asp-action="Index">
                     <i class="fas fa-tachometer-alt me-2"></i>Asset Movement
                 </a>
-                <a class="list-group-item list-group-item-action bg-primary shadow text-white rounded-2 m-2 second-text fw-bold"
-                    asp-controller="User" asp-action="Index">
-                    <i class="fas fa-tachometer-alt me-2"></i>Users
-                </a>
             </div>
 
             <div class="list-group list-group-flush my-3">
-                <a href="#"
+                <a asp-controller="UserAuthentication" asp-action="Logout"
                     class="list-group-item list-group-item-action bg-danger shadow text-white rounded-2 m-2 second-text fw-bold">
                     <i class="fas fa-power-off me-2"></i>Logout
 
@@ -70,8 +66,9 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-4 px-4">
                 <div class="d-flex align-items-center">
                     @* <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i> *@
-                    <h2 class="fs-4 text-uppercase font-weight-bold m-0"> Dashboard Of Asset Management System 
-                    <img src="~/Somdigit.png" width="150" alt="Image description">
+                    <h2 class="fs-4 text-uppercase font-weight-bold m-0 text-primary mx-2"> <img src="~/somdigital.png"
+                            width="80" alt="Image description"> Dashboard Of Asset Management System
+
                     </h2>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -83,9 +80,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle second-text fw-bold" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>Test User
+                            <a href="#" class="nav-link dropdown-toggle text-capitalize second-text fw-bold"
+                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-2"></i>@User.Identity.Name
                             </a>
                         </li>
                         <ul class="navbar-nav mr-auto">

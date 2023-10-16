@@ -11,7 +11,7 @@ using sample.Data;
 
 namespace sample.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20231009065415_Report")]
     partial class Report
     {

@@ -7,9 +7,9 @@ namespace sample.Controllers
 {
     public class ReportController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public ReportController(AppDbContext context)
+        public ReportController(ApplicationDbContext context)
         {
             _context = context;
         }

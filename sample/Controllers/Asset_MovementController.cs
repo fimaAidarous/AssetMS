@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sample.Data;
@@ -6,11 +7,12 @@ using sample.Models;
 
 namespace sample.Controllers
 {
+    [Authorize]
     public class Asset_MovementController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public Asset_MovementController(AppDbContext context)
+        public Asset_MovementController(ApplicationDbContext context)
         {
             _context = context;
         }

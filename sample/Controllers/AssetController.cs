@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using sample.Data;
 using sample.Models;
 
 namespace sample.Controllers
 {
+    [Authorize]
     public class AssetController: Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public AssetController(AppDbContext context)
+        public AssetController(ApplicationDbContext context)
         {
             _context = context; 
         }

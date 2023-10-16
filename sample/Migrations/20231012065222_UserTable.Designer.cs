@@ -11,7 +11,7 @@ using sample.Data;
 
 namespace sample.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20231012065222_UserTable")]
     partial class UserTable
     {
