@@ -18,6 +18,9 @@ namespace sample.Models.DTO
         [Required]
         public string? Username { get; set; }
 
+        // [Required]
+        public string? Role { get; set; }
+
         [Required]
         [RegularExpression(
             "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*[#$^+=!*()@%&]).{6,}$",
@@ -28,6 +31,5 @@ namespace sample.Models.DTO
         [Required]
         [Compare("Password")]
         public string? PasswordConfirm { get; set; }
-        public string? Role { get; set; }
     }
 }

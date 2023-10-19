@@ -107,7 +107,8 @@ namespace sample.Repositories.Implementation
             if (!result.Succeeded)
             {
                 status.StatusCode = 0;
-                status.Message = "User Creation failed";
+                var errors = string.Join(", ", result.Errors);
+                status.Message = errors;
                 return status;
             }
 

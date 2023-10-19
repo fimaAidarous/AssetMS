@@ -1,164 +1,204 @@
-﻿// using Microsoft.AspNetCore.Mvc;
-// using Microsoft.EntityFrameworkCore;
-// using sample.Data;
-// using sample.Models;
-// namespace sample.Controllers
-// {
-//     public class UserController : Controller
-//     {
-//         private readonly ApplicationDbContext _context;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using sample.Data;
+using sample.Migrations;
+using sample.Models;
+using sample.Models.DTO;
+using sample.Repositories.Implementation;
+using sample.Repositories.Interfaces;
+namespace sample.Controllers
+{
+    [Authorize(Roles = "Admin")]
+    public class UserController : Controller
+    {
 
-//         public UserController(ApplicationDbContext context)
-//         {
-//             _context = context;
-//         }
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IUserAuthenticationService _service;
 
-//         // GET: User
+        public UserController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IUserAuthenticationService service)
+        {
+            _context = context;
+            _userManager = userManager;
+            _service = service;
+        }
 
-//         public async Task<IActionResult> Index()
-//         {
-//             return _context.Users != null ?
-//                          View(await _context.Users.ToListAsync()) :
-//                          Problem("Entity set 'AppDbContext.'  is null.");
-//         }
+        // GET: User
 
-//         // GET: User/Details/5
-//         public async Task<IActionResult> Details(int? id)
-//         {
-//             if (id == null || _context.Users == null)
-//             {
-//                 return NotFound();
-//             }
+        public async Task<IActionResult> Index()
+        {
+            var users = await _userManager.Users.ToListAsync();
 
-//             var User = await _context.Users
-//                 .FirstOrDefaultAsync(m => m.Id == id);
-//             if (User == null)
-//             {
-//                 return NotFound();
-//             }
+            var usersListDTO = users.Select(u => new UserListDTO
+            {
+                Id = u.Id,
+                Name = u.Name,
+                Username = u.UserName,
+                Email = u.Email,
+                Roles = _userManager.GetRolesAsync(u).Result,
+            }).ToList();
 
-//             return View(User);
-//         }
+            return View(usersListDTO);
+        }
 
-//         // GET: user/Create
-//         public IActionResult Create()
-//         {
-//             return View();
-//         }
+        // GET: User/Details/5
+        public async Task<IActionResult> Details(string? id)
+        {
+            if (id == null || _context.Users == null)
+            {
+                return NotFound();
+            }
+
+            var users = await _context.Users.ToListAsync();
+            var detailedUser = users.Select(a => new UserListDTO
+            {
+                Id = a.Id,
+                Name = a.Name,
+                Username = a.UserName,
+                Email = a.Email,
+                Roles = _userManager.GetRolesAsync(a).Result
+            }).FirstOrDefault(a => a.Id == id);
+            if (detailedUser == null)
+            {
+                return NotFound();
+            }
+
+            return View(detailedUser);
+        }
+
+        // GET: user/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
 
-//         [HttpPost]
-//         [ValidateAntiForgeryToken]
-//         public async Task<IActionResult> Create([Bind("Name,Email,Role,Password")] User user)
-//         {
-//             if (ModelState.IsValid)
-//             {
-//                 user.CreatedAt = DateTime.Now;
-//                 _context.Add(user);
-//                 await _context.SaveChangesAsync();
-//                 return RedirectToAction(nameof(Index));
-//             }
-//             return View(user);
-//         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Name, Username, Email, Role, Password, PasswordConfirm")] RegistrationModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var result = await _service.RegistrationAsync(model);
+            if (result.StatusCode == 0)
+            {
+                TempData["msg"] = result.Message;
+                return View(model);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
 
 
 
-//         // GET: User/Edit/5    
-//         public async Task<IActionResult> Edit(int? id)
-//         {
-//             if (id == null || _context.Users == null)
-//             {
-//                 return NotFound();
-//             }
+        // // GET: User/Edit/5    
+        // public async Task<IActionResult> Edit(int? id)
+        // {
+        //     if (id == null || _context.Users == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-//             var User = await _context.Users.FindAsync(id);
-//             if (User == null)
-//             {
-//                 return NotFound();
-//             }
-//             return View(User);
-//         }
+        //     var User = await _context.Users.FindAsync(id);
+        //     if (User == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //     return View(User);
+        // }
 
-//         [HttpPost]
-//         [ValidateAntiForgeryToken]
-//         public async Task<IActionResult> Edit(int id, [Bind("Name,Email,Role,Password")] User user)
-//         {
-//             if (id != user.Id)
-//             {
-//                 return NotFound();
-//             }
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Edit(int id, [Bind("Name,Email,Role,Password")] User user)
+        // {
+        //     if (id != user.Id)
+        //     {
+        //         return NotFound();
+        //     }
 
-//             if (ModelState.IsValid)
-//             {
-//                 try
-//                 {
-//                     _context.Update(user);
-//                     await _context.SaveChangesAsync();
-//                 }
-//                 catch (DbUpdateConcurrencyException)
-//                 {
-//                     if (!UserExists(user.Id))
-//                     {
-//                         return NotFound();
-//                     }
-//                     else
-//                     {
-//                         throw;
-//                     }
-//                 }
-//                 return RedirectToAction(nameof(Index));
-//             }
-//             return View(user);
-//         }
+        //     if (ModelState.IsValid)
+        //     {
+        //         try
+        //         {
+        //             _context.Update(user);
+        //             await _context.SaveChangesAsync();
+        //         }
+        //         catch (DbUpdateConcurrencyException)
+        //         {
+        //             if (!UserExists(user.Id))
+        //             {
+        //                 return NotFound();
+        //             }
+        //             else
+        //             {
+        //                 throw;
+        //             }
+        //         }
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(user);
+        // }
 
-//         // GET: User/Delete/5
-//         public async Task<IActionResult> Delete(int? id)
-//         {
-//             if (id == null || _context.Users == null)
-//             {
-//                 return NotFound();
-//             }
+        // GET: User/Delete/5
+        public async Task<IActionResult> Delete(string? id)
+        {
 
-//             var User = await _context.Users
-//                 .FirstOrDefaultAsync(m => m.Id == id);
-//             if (User == null)
-//             {
-//                 return NotFound();
-//             }
+            if (id == null || _context.Users == null)
+            {
+                return NotFound();
+            }
+            var users = await _context.Users.ToListAsync();
+            var detailedUser = users.Select(a => new UserListDTO
+            {
+                Id = a.Id,
+                Name = a.Name,
+                Username = a.UserName,
+                Email = a.Email,
+                Roles = _userManager.GetRolesAsync(a).Result
+            }).FirstOrDefault(a => a.Id == id);
+            if (detailedUser == null)
+            {
+                return NotFound();
+            }
+            return View(detailedUser);
 
-//             return View(User);
-//         }
+        }
 
-//         // POST: User/Delete/5
-//         [HttpPost, ActionName("Delete")]
-//         [ValidateAntiForgeryToken]
-//         public async Task<IActionResult> DeleteConfirmed(int id)
-//         {
-//             if (_context.Users == null)
-//             {
-//                 return Problem("Entity set 'AppDbContext.Users'  is null.");
-//             }
-//             var user = await _context.Users.FindAsync(id);
-//             if (user != null)
-//             {
-//                 _context.Users.Remove(user);
-//             }
+        // POST: User/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            if (_context.Users == null)
+            {
+                return Problem("Entity set 'AppDbContext.Users'  is null.");
+            }
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+            }
+            // 
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
-//             await _context.SaveChangesAsync();
-//             return RedirectToAction(nameof(Index));
-//         }
+        // private bool UserExists(int id)
+        // {
+        //     return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
+        // }
 
-//         private bool UserExists(int id)
-//         {
-//             return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
-//         }
+        // // GET: User/Print/5
+        // public IActionResult Print(int id)
+        // {
+        //     var User = _context.Users.FirstOrDefault(m => m.Id == id);
+        //     return PartialView("_Print", User);
+        // }
 
-//         // GET: User/Print/5
-//         public IActionResult Print(int id)
-//         {
-//             var User = _context.Users.FirstOrDefault(m => m.Id == id);
-//             return PartialView("_Print", User);
-//         }
-
-//     }
-// }
+    }
+}

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using sample.Data;
 using sample.Models;
 
 namespace sample.Controllers
 {
+     [Authorize(Roles ="Admin")]
     public class ReportController : Controller
     {
         private readonly ApplicationDbContext _context;

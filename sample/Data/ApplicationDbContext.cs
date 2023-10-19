@@ -12,6 +12,6 @@ namespace sample.Data
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Asset_Movement> AssetMovements { get; set; }
         public DbSet<Asset_Maintenance> AssetMaintenances { get; set; }
-        // public DbSet<User> Users { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

@@ -55,10 +55,10 @@ namespace sample.Controllers
         }
 
         [Authorize]
-        public async Task Logout()
+        public async Task<IActionResult> Logout()
         {
             await _service.logOutAsync();
-            RedirectToAction(nameof(Login));
+            return RedirectToAction(nameof(Login));
         }
     }
 }

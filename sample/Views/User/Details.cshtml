@@ -1,4 +1,4 @@
-﻿@model sample.Models.User
+﻿@model sample.Models.DTO.UserListDTO
 
 @{
     ViewData["Title"] = "Details";
@@ -34,17 +34,12 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Role)
+            @Html.DisplayNameFor(model => model.Roles)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Role)
+            @Html.DisplayFor(model => model.Roles)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+
     </dl>
 </div>
 <div>

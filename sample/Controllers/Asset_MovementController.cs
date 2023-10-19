@@ -7,7 +7,7 @@ using sample.Models;
 
 namespace sample.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class Asset_MovementController : Controller
     {
         private readonly ApplicationDbContext _context;
