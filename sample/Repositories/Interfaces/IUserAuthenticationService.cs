@@ -12,6 +12,10 @@ namespace sample.Repositories.Interfaces
 
         Task<Status> RegistrationAsync(RegistrationModel registration);
 
+        Task<Status> UpdateAsync(string id, UserEditModel model);
+
+        Task<Status> ChangePasswordAsync(ChangePasswordModel changePasswordModel, string username);
+
         Task logOutAsync();
     }
 }

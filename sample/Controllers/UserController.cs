@@ -74,6 +74,46 @@ namespace sample.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Edit(string? id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user is not null)
+            {
+                var role = await _userManager.GetRolesAsync(user);
+                var model = new UserEditModel()
+                {
+                    Id = user.Id,
+                    Email = user!.Email,
+                    Username = user!.UserName,
+                    Name = user.Name,
+                    Role = string.Join(",", role)
+
+                };
+                return View(model);
+            }
+            return Problem();
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("Name, Username, Email, Role, CurrentPassword, Password, PasswordConfirm")] UserEditModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var result = await _service.UpdateAsync(id, model);
+            if (result.StatusCode == 0)
+            {
+                TempData["msg"] = result.Message;
+                return View(model);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
