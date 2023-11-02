@@ -9,153 +9,153 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = sample
 build_property.RootNamespace = sample
-build_property.ProjectDir = C:\Users\Ritwan Abdirashit\source\repos\AssetMS\sample\
+build_property.ProjectDir = D:\sem8\Project\AssetMSystem\AssetMS\sample\
 build_property.RazorLangVersion = 2.1
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\Users\Ritwan Abdirashit\source\repos\AssetMS\sample
+build_property.MSBuildProjectDirectory = D:\sem8\Project\AssetMSystem\AssetMS\sample
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset/Create.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset/Delete.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset/Details.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset/Edit.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset/Index.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset/_Print.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset/_Print.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcX1ByaW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Maintenance/Create.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Maintenance/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTWFpbnRlbmFuY2VcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Maintenance/Delete.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Maintenance/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTWFpbnRlbmFuY2VcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Maintenance/Details.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Maintenance/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTWFpbnRlbmFuY2VcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Maintenance/Edit.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Maintenance/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTWFpbnRlbmFuY2VcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Maintenance/Index.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Maintenance/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTWFpbnRlbmFuY2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Maintenance/MainIndex.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Maintenance/MainIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTWFpbnRlbmFuY2VcTWFpbkluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Maintenance/_Print.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Maintenance/_Print.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTWFpbnRlbmFuY2VcX1ByaW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Movement/Create.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Movement/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTW92ZW1lbnRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Movement/Delete.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Movement/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTW92ZW1lbnRcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Movement/Details.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Movement/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTW92ZW1lbnRcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Movement/Edit.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Movement/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTW92ZW1lbnRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Movement/Index.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Movement/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTW92ZW1lbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Movement/MoveIndex.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Movement/MoveIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTW92ZW1lbnRcTW92ZUluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Asset_Movement/_Print.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Asset_Movement/_Print.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRfTW92ZW1lbnRcX1ByaW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Home/Index.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Home/Privacy.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Report/Index.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Report/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Report/Report.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Report/Report.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XFJlcG9ydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Report/_Print.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Report/_Print.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XF9QcmludC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Shared/Error.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Shared/_Layout.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/UserAuthentication/Login.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/UserAuthentication/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckF1dGhlbnRpY2F0aW9uXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/UserAuthentication/Registration.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/UserAuthentication/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckF1dGhlbnRpY2F0aW9uXFJlZ2lzdHJhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/User/Create.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/User/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/User/Delete.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/User/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/User/Details.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/User/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/User/Index.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/_ViewImports.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ritwan Abdirashit/source/repos/AssetMS/sample/Views/_ViewStart.cshtml]
+[D:/sem8/Project/AssetMSystem/AssetMS/sample/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
